@@ -6,7 +6,7 @@ from slack_bolt.adapter.flask import SlackRequestHandler
 from slack_bolt import App
 from dotenv import find_dotenv, load_dotenv
 from flask import Flask, request, abort
-from functions import draft_email
+from functions import draft_email, my_function
 import logging
 from functools import wraps
 import time
@@ -80,21 +80,6 @@ def get_bot_user_id():
         return response["user_id"]
     except SlackApiError as e:
         print(f"Error: {e}")
-
-
-def my_function(text):
-    """
-    Custom function to process the text and return a response.
-    In this example, the function converts the input text to uppercase.
-
-    Args:
-        text (str): The input text to process.
-
-    Returns:
-        str: The processed text.
-    """
-    response = text.upper()
-    return response
 
 
 @app.event("app_mention")

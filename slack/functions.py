@@ -11,7 +11,7 @@ load_dotenv(find_dotenv())
 
 
 def draft_email(user_input, name="Dave"):
-    
+
     repo_id = "meta-llama/Meta-Llama-3-8B-Instruct"  
     chat =  HuggingFaceHub(repo_id=repo_id, model_kwargs={"temperature": 0.1})
 
@@ -42,4 +42,18 @@ def draft_email(user_input, name="Dave"):
     chain = LLMChain(llm=chat, prompt=chat_prompt)
     response = chain.run(user_input=user_input, signature=signature, name=name)
 
+    return response
+
+def my_function(text):
+    """
+    Custom function to process the text and return a response.
+    In this example, the function converts the input text to uppercase.
+
+    Args:
+        text (str): The input text to process.
+
+    Returns:
+        str: The processed text.
+    """
+    response = text.upper()
     return response
