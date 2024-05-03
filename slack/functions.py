@@ -1,4 +1,4 @@
-from langchain.chat_models import ChatOpenAI
+from langchain import HuggingFaceHub
 from langchain.chains import LLMChain
 from dotenv import find_dotenv, load_dotenv
 from langchain.prompts.chat import (
@@ -11,7 +11,9 @@ load_dotenv(find_dotenv())
 
 
 def draft_email(user_input, name="Dave"):
-    chat = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=1)
+    
+    repo_id = "meta-llama/Meta-Llama-3-8B-Instruct"  
+    chat =  HuggingFaceHub(repo_id=repo_id, model_kwargs={"temperature": 0.1})
 
     template = """
     

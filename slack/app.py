@@ -11,8 +11,11 @@ import logging
 from functools import wraps
 import time
 import sys
+import ssl
+import certifi
 
 # Configure the logging level and format
+# demo
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
